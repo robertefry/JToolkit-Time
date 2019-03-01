@@ -1,11 +1,12 @@
 
-package rfry.jtoolkit.timing;
+package robertefry.jtoolkit.timing;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * A stopwatch.
+ * 
  * @author Robert E Fry
  * @date 2 Dec 2018
  * @time 20:24:20
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class StopWatch {
 	
-	private final List<LapLog> laps = new ArrayList<LapLog>();
+	private final List< LapLog > laps = new ArrayList< LapLog >();
 	private volatile long starttime = 0, finishtime = 0;
 	private volatile boolean running = false;
 	
@@ -25,7 +26,7 @@ public class StopWatch {
 	 * Start.
 	 */
 	public synchronized void start() {
-		if (running) return;
+		if ( running ) return;
 		running = true;
 		starttime = time();
 	}
@@ -42,7 +43,7 @@ public class StopWatch {
 	 * Logs the current running duration.
 	 */
 	public synchronized void lap() {
-		laps.add(new LapLog(starttime, finishtime));
+		laps.add( new LapLog( starttime, finishtime ) );
 	}
 	
 	/**
@@ -54,14 +55,16 @@ public class StopWatch {
 	
 	/**
 	 * Returns the list of laps.
+	 * 
 	 * @return the list of laps.
 	 */
-	public synchronized List<LapLog> getLaps() {
+	public synchronized List< LapLog > getLaps() {
 		return laps;
 	}
 	
 	/**
 	 * Is the stopwatch running?
+	 * 
 	 * @return true if the stopwatch is running else false.
 	 */
 	public synchronized boolean isRunning() {
@@ -70,6 +73,7 @@ public class StopWatch {
 	
 	/**
 	 * A class to contain lap information.
+	 * 
 	 * @author Robert E Fry
 	 * @date 2 Dec 2018
 	 * @time 20:28:42
@@ -79,13 +83,14 @@ public class StopWatch {
 		
 		private final long starttime, finishtime;
 		
-		public LapLog(long start, long finish) {
+		public LapLog( long start, long finish ) {
 			starttime = start;
 			finishtime = finish;
 		}
 		
 		/**
 		 * Retruns the time the stopwatch was started for this log.
+		 * 
 		 * @return the time the stopwatch was started for this log.
 		 */
 		public synchronized long getStartTime() {
@@ -94,6 +99,7 @@ public class StopWatch {
 		
 		/**
 		 * Retruns the time the stopwatch was stopped or lapped for this log.
+		 * 
 		 * @return the time the stopwatch was stopped or lapped for this log.
 		 */
 		public synchronized long getFinishTime() {
@@ -102,6 +108,7 @@ public class StopWatch {
 		
 		/**
 		 * Retruns the time the stopwatch was running for this log.
+		 * 
 		 * @return the time the stopwatch was running for this log.
 		 */
 		public synchronized long getRunningTime() {
